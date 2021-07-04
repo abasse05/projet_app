@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>LightApp | Accueil</title>
+
+  
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="{% static "plugins/slick/slick.css" %}">
+  <link rel="stylesheet" href="{% static "plugins/slick/slick-theme.css" %}">
+  <!-- FancyBox -->
+  <link rel="stylesheet" href="{% static "plugins/fancybox/jquery.fancybox.min.css" %}">
+  
+  <!-- Stylesheets -->
+  <link href="{% static "css/bootstrap4.min.css" %}" rel="stylesheet">
+  <link href="{% static "css/style.css" %}" rel="stylesheet">
+  
+  <!--Favicon-->
+  <link rel="shortcut icon" href="{% static "images/logo.jpg" %}" type="image/x-icon">
+  <link rel="icon" href="{% static "images/logo.jpg" %}" type="image/x-icon">
+
+</head>
+
+
+<body>
+  <div class="page-wrapper">
+
+
+<!--Header Upper-->
+<section class="header-uper">
+      <div class="container clearfix">
+            <div class="logo">
+                  <figure>
+                        <a href="/index">
+                              <img src="{% static "images/logo.jpg" %}" alt="" width="230" height="75">
+                        </a>
+                  </figure>
+            </div>
+            <div class="right-side">
+                  <ul class="contact-info">
+                        <li class="item">
+                              <div class="icon-box">
+                                    <i class="fa fa-envelope-o"></i>
+                              </div>
+                              <strong>Email</strong>
+                              <br>
+                              <a href="#">
+                                    <span>infolightApp@gmail.com</span>
+                              </a>
+                        </li>
+                        <li class="item">
+                              <div class="icon-box">
+                                    <i class="fa fa-phone"></i>
+                              </div>
+                              <strong>Contactez nous </strong>
+                              <br>
+                              <span>+ (225) 07 68 64 44 65/ 07 89 87 03 54</span>
+                        </li>
+                  </ul>
+            </div>
+      </div>
+</section>
+
+
+<!--about section-->
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 col-xs-12">
+				<!-- Connexion -->
+                <form class="form bg-gray rounded" method="post" action="." style="margin:20px auto; width:40%; padding:30px;">
+                    {% csrf_token %}
+                        
+                    <h1 class="h3 mb-3 fw-normal">Connectez vous</h1>
+                    <br>
+                    {% if error %}
+                        <div class="alert alert-danger form3-row fadeSuperInUp3">
+                            <center class="">
+                                <strong>Utilisateur inconnu ou mauvais de mot de passe.</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </center>
+                        </div>
+                    {% endif %}
+                    <div class="form-group">
+                        <label for="floatingInput">Username</label>
+                        <input required type="name" class="form-control" name="username" id="floatingInput" placeholder="Username">
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="floatingPassword">Mot de passe</label>
+                        <input required type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                    </div>
+
+                    <div class="form-group">
+                        <button class="w-100 btn btn-lg btn-primary" name="valider" type="submit" value="valider">Se connecter</button>
+                    </div>
+
+                </form>
+
+			</div>
+		</div>
+        <hr style="height: 3px; color:#433; background-color:#433;">
+    <section class="feature-section section">
+        <div class="row">
+			<div class="col-sm-12 col-xs-12">
+				<ul class="contact-info">
+                        <li class="item text-light text-bold" style="width:30%;">
+                              <div class="icon-box">
+                                    <i class="fa fa-phone"></i>
+                              </div>
+                              <strong style="color:white;">Contactez nous </strong>
+                              <br>
+                              <span style="color:white;">+ (225) 07 68 64 44 65/ 07 89 87 03 54</span>
+                        </li>
+
+                        <li class="item text-light text-bold" style="width:30%;">
+                              <div class="icon-box">
+                                    <i class="fa fa-envelope-o"></i>
+                              </div>
+                              <strong style="color:white;">Email</strong>
+                              <br>
+                              <a href="#">
+                                    <span style="color:white;">infolightApp@gmail.com</span>
+                              </a>
+                        </li>
+                        
+                        <li class="item" style="width:30%;">
+                              <div class="icon-box">
+                                    <i class="fa fa-phone"></i>
+                              </div>
+                              <strong style="color:white;">Autres contacts </strong>
+                              <br>
+                              <span style="color:white;">+ (225) 07 68 64 44 65/ 07 89 87 03 54</span>
+                        </li>
+                  </ul>
+			</div>
+		</div>
+        </section>
+	</div>
+
+<!--End about section-->
+
+</div>
+<!--End pagewrapper-->
+
+
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target=".header-top">
+  <span class="icon fa fa-angle-up"></span>
+</div>
+
+<script src="{% static "plugins/jquery.js" %}"></script>
+<script src="{% static "plugins/bootstrap.min.js" %}"></script>
+<script src="{% static "plugins/bootstrap-select.min.js" %}"></script>
+<!-- Slick Slider -->
+<script src="{% static "plugins/slick/slick.min.js" %}"></script>
+<!-- FancyBox -->
+<script src="{% static "plugins/fancybox/jquery.fancybox.min.js" %}"></script>
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+<script src="{% static "plugins/google-map/gmap.js" %}"></script>
+
+<script src="{% static "plugins/validate.js" %}"></script>
+<script src="{% static "plugins/wow.js" %}"></script>
+<script src="{% static "plugins/jquery-ui.js" %}"></script>
+<script src="{% static "plugins/timePicker.js" %}"></script>
+<script src="{% static "js/script.js" %}"></script>
+</body>
+
+</html>
+

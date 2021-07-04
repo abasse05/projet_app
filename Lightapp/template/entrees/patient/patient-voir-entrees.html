@@ -1,0 +1,249 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>LightApp | Entrées</title>
+
+  
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="{% static "plugins/slick/slick.css" %}">
+  <link rel="stylesheet" href="{% static "plugins/slick/slick-theme.css" %}">
+  <!-- FancyBox -->
+  <link rel="stylesheet" href="{% static "plugins/fancybox/jquery.fancybox.min.css" %}">
+  
+  <!-- Stylesheets -->
+  <link href="{% static "css/style.css" %}" rel="stylesheet">
+  
+  <!--Favicon-->
+  <link rel="shortcut icon" href="{% static "images/logo.jpg" %}" type="image/x-icon">
+  <link rel="icon" href="{% static "images/logo.jpg" %}" type="image/x-icon">
+
+</head>
+
+
+<body>
+  <div class="page-wrapper">
+
+
+<!--Header Upper-->
+<section class="header-uper">
+      <div class="container clearfix">
+            <div class="logo">
+                  <figure>
+                        <a href="/index">
+                              <img src="{% static "images/logo.jpg" %}" alt="" width="230" height="75">
+                        </a>
+                  </figure>
+            </div>
+            <div class="right-side">
+                  <ul class="contact-info">
+                        <li class="item">
+                              <div class="icon-box">
+                                    <i class="fa fa-envelope-o"></i>
+                              </div>
+                              <strong>Email</strong>
+                              <br>
+                              <a href="#">
+                                    <span>infolightApp@gmail.com</span>
+                              </a>
+                        </li>
+                        <li class="item">
+                              <div class="icon-box">
+                                    <i class="fa fa-phone"></i>
+                              </div>
+                              <strong>Contactez nous </strong>
+                              <br>
+                              <span>+ (225) 07 68 64 44 65/ 07 89 87 03 54</span>
+                        </li>
+                  </ul>
+                  <div class="link-btn">
+                        <a href="#" data-toggle="modal" data-target="#logoutModal" class="btn-style-one">Deconnexion</a>
+                  </div>
+            </div>
+      </div>
+</section>
+
+<!--Deconnexion code-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">ATTENTION !!!</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Êtes vous sûre de vouloir vous deconnecté ???.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Non</button>
+          <a class="btn btn-primary" href="/deconnexion">Oui, Biensûr</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--Deconnexion code-->
+
+<!--about section-->
+	<div class="container" style="margin-top:0px;">
+        <h2><b class="text-primary"><a href="/index">LightApp</a></b> - Les entrées / patient</h2>
+            <hr style="height: 3px; color:#433; background-color:#433;">
+		        <div class="row">
+                  <div class="col-sm-4">
+                        <a href="/patient-liste-entrees">
+                              <h4>Patients</h4>
+                        </a>
+                  </div>
+                  <div class="col-sm-4">
+                        <a href="/paiement-liste-entrees">
+                              <h4>Fiches de paiement</h4>
+                        </a>
+                  </div>
+                  <div class="col-sm-4">
+                        <a href="/rdv-liste-entrees">
+                              <h4>Prise de RDV</h4>
+                        </a>
+                  </div>
+            </div>
+            <hr style="height: 3px; color:#433; background-color:#433;">
+            <div style="clear:both; height: 30px">&nbsp;</div>
+	</div>
+<!--End about section-->
+      <div class="container" style="margin-top:0px;">
+            <div class="row">
+            <div class="text-white bg-info border border-dark" style="padding:10px; margin:0;font-size:20px;">&nbsp; Voir infos du patient<a class="btn btn-danger" style="float:right;" href="/patient-liste-entrees">Retour à la liste</a></div>
+                <div style="clear:both; height: 30px">&nbsp;</div>
+                <div class="row">
+                
+                 <form class="default-form contact-form" >
+                    
+                    <div class="row">
+
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <input readonly type="text" value={{patients.nompatient}} placeholder="Nom patient" >
+                                </div>
+                                <div class="form-group">
+                                    <input readonly type="date" value={{patients.datenaissancepatient|date:'%d/%m/%Y'}} placeholder="Date de naissance patient"  id="datepicker">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </div>
+                                <div class="form-group">
+                                    <input readonly type="emailpatient" value={{patients.emailpatient}}  placeholder="Email patient" >
+                                </div>
+                                <div class="form-group">
+                                    <select readonly name="sexepatient">
+                                        <option selected >{{patients.emailpatient}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-8 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <input readonly type="text" value="{{patients.prenompatient}}" placeholder="Prenom patient" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <input readonly type="text" value="{{patients.telephonepatient}}" placeholder="Telephone patient" >
+                                </div>
+                                <div class="form-group">
+                                    <input readonly type="text" value="{{patients.domicileepatient}}" placeholder="Domicile patient" >
+                                </div>
+                                <div class="form-group">
+                                    <input readonly type="text" value="{{patients.professionpatient}}" placeholder="Profession patient" >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <input readonly type="text" value="{{patients.cnipatient}}" placeholder="Numero Cni patient" >
+                                </div>
+                                <div class="form-group">
+                                    <input readonly type="text" value="{{patients.attestationepatient}}" placeholder="Attestation patient" >
+                                </div>
+                                <div class="form-group">
+                                    <input readonly type="text" value="{{patients.telephoneurgencepatient}}" placeholder="Numero urgence patient" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                    
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <select readonly >
+                                        <option selected >{{patients.situationmatrimonialepatient}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <input readonly type="text" value="{{patients.npmerepatient}}" placeholder="Nom-prenoms père patient" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <input readonly type="text" value="{{patients.npmerepatient}}" placeholder="Nom-prenoms mère patient" >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <select readonly name="payspatient">
+                                        <option selected >{{patients.payspatient}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+                <div style="clear:both; height: 60px">&nbsp;</div>
+            </div>    
+        </div>
+	</div>
+
+</div>
+<!--End pagewrapper-->
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target=".header-top">
+  <span class="icon fa fa-angle-up"></span>
+</div>
+
+<script src="{% static "plugins/jquery.js" %}"></script>
+<script src="{% static "plugins/bootstrap.min.js" %}"></script>
+<script src="{% static "plugins/bootstrap-select.min.js" %}"></script>
+<!-- Slick Slider -->
+
+<script src="{% static "plugins/slick/slick.min.js" %}"></script>
+<!-- FancyBox -->
+<script src="{% static "plugins/fancybox/jquery.fancybox.min.js" %}"></script>
+
+<script src="{% static "plugins/validate.js" %}"></script>
+<script src="{% static "plugins/wow.js" %}"></script>
+<script src="{% static "plugins/jquery-ui.js" %}"></script>
+<script src="{% static "plugins/timePicker.js" %}"></script>
+<script src="{% static "js/script.js" %}"></script>
+</body>
+
+</html>

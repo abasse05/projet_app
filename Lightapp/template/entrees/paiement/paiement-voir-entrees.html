@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>LightApp | Caisse</title>
+  <title>LightApp | Entrées</title>
 
   
   <!-- mobile responsive meta -->
@@ -12,17 +12,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <!-- Slick Carousel -->
-
   <link rel="stylesheet" href="{% static "plugins/slick/slick.css" %}">
   <link rel="stylesheet" href="{% static "plugins/slick/slick-theme.css" %}">
   <!-- FancyBox -->
   <link rel="stylesheet" href="{% static "plugins/fancybox/jquery.fancybox.min.css" %}">
   
   <!-- Stylesheets -->
-  
-  <link href="{% static "css/style.css" %}" rel="stylesheet">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <link href="{% static "css/bootstrap4.min.css" %}" rel="stylesheet"/>
+ <link href="{% static "css/style.css" %}" rel="stylesheet">
+  
+  
   <!--Favicon-->
   <link rel="shortcut icon" href="{% static "images/logo.jpg" %}" type="image/x-icon">
   <link rel="icon" href="{% static "images/logo.jpg" %}" type="image/x-icon">
@@ -94,104 +94,122 @@
 
 <!--about section-->
 	<div class="container" style="margin-top:0px;">
-            <h2><b class="text-primary"><a href="/index">LightApp</a></b> - Caisse / reçu de paiement</h2>
+        <h2><b class="text-primary"><a href="/index">LightApp</a></b> - Les entrées / patient</h2>
             <hr style="height: 3px; color:#433; background-color:#433;">
-		<div class="row">
-                  <div class="col-sm-6">
-                        <a href="/paiement-liste-caisse">
+		        <div class="row">
+                  <div class="col-sm-4">
+                        <a href="/patient-liste-entrees">
+                              <h4>Patients</h4>
+                        </a>
+                  </div>
+                  <div class="col-sm-4">
+                        <a href="/paiement-liste-entrees">
                               <h4>Fiches de paiement</h4>
                         </a>
                   </div>
-                  <div class="col-sm-6">
-                        <a href="/recu-liste-caisse">
-                              <h4>Liste des reçus de paiement</h4>
+                  <div class="col-sm-4">
+                        <a href="/rdv-liste-entrees">
+                              <h4>Prise de RDV</h4>
                         </a>
                   </div>
             </div>
             <hr style="height: 3px; color:#433; background-color:#433;">
-            <div style="clear:both; height: 50px">&nbsp;</div>
+            <div style="clear:both; height: 30px">&nbsp;</div>
 	</div>
 <!--End about section-->
       <div class="container" style="margin-top:0px;">
             <div class="row">
-                  <table id="example" class="table table-striped table-bordered table-white" style="width:100%;">
-				<thead>
-					<tr>
-						<th>Référence</th>
-						<th>Date</th>
-						<th>Patients</th>
-						<th>Service</th>
-						<th>Motifs</th>
-						<th>Caissier</th>
-						<th>Montant</th>
-						<th>Etat</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					{% for donne  in payements %}
-					<tr>
-						<td style="font-size:13px;">{{ donne.reference}}</td>
-						<td style="font-size:13px;">{{ donne.patient}}</td>
-						<td style="font-size:13px;">{{ donne.patient.sexe}}</td>
-						<td style="font-size:13px;">{{ donne.Date_payement|date:'d-m-Y'}}&nbsp;{{ donne.Heure_payement|time:'H:i'}}</td>
-						<td style="font-size:13px;">{{ donne.Total_payement}} FCFA</td>
-						{% if donne.Statut == "Ouverte"%}
-							<td class="text-bold text-danger" style="font-size:13px;">Non payée</td>
-						{% else %}
-							<td class="text-bold text-success" style="font-size:13px;">{{ donne.Statut}}</td>
-						{% endif %}
-						<td><a href="{% url "voir_plus_payements" donne.id %}" class="btn btn-primary"><img src="{% static "img/interface/icon_display2_white.svg" %}" title="Voir plus" class="menu-display-icon text-white"  alt="" title="Plus d'info"/></a></td>
-						<td><a href="{% url "update_fiches_payements" donne.id %}" class="btn btn-success"><img src="{% static "img/interface/icon_edit_white.svg" %}" title="Editer" class="menu-display-icon text-white"  alt="" title="Modifier"/></a></td>
-						<td><a href="{% url "delete_payements" donne.id %}" class="btn btn-danger"><span class="glyphicon glyphicon-remove-sign"></span></a></td>
-					</tr>
-					{% endfor %}
-					
-				</tbody>
-				<tfoot>
-					<tr>
-						<th>Référence</th>
-						<th>Date</th>
-						<th>Patients</th>
-						<th>Service</th>
-						<th>Motifs</th>
-						<th>Caissier</th>
-						<th>Montant</th>
-						<th>Etat</th>
-						<th></th>
-					</tr>
-				</tfoot>
-			</table>
+            <div class="text-white bg-info border border-dark" style="padding:10px; margin:0;font-size:20px;">&nbsp; Informations de fiche de paiement<a class="btn btn-danger" style="float:right;" href="/paiement-liste-entrees">Retour</a></div>
+                <div style="clear:both; height: 30px">&nbsp;</div>
+                 
+                 <form class="default-form contact-form" >
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <select readonly>
+                                        <option selected >MED-{{paiements.id}} | {{paiements.patient}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+
+                                <div class="form-group">
+                                    <input type="text" value="{{paiements.datepaiement|date:'d/m/Y'}}" placeholder="Date de naissance patient" readonly id="datepicker">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+
+                                <div class="form-group">
+                                    <input type="time" value="{{paiements.heurepaiement|time:'H:i'}}" placeholder="Heure" readonly>
+                                </div>
+
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-7 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+
+                                <div class="form-group">
+                                    <input type="text" value="{{paiements.praticien}}" placeholder="Nom-prenoms du Praticien" readonly>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <input type="text" value="{{paiements.servicepaiement}}" placeholder="Service" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-9 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <input type="text" value="{{paiements.actespaiement}}" placeholder="Actes à pratiquer" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <input type="text" value="{{paiements.totalpaiement}} FCFA" placeholder="Prix de l'acte" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </form>
+                
             </div>
 	</div>
 
 </div>
+
 <!--End pagewrapper-->
 <!--Scroll to top-->
+
+
+
 <div class="scroll-to-top scroll-to-target" data-target=".header-top">
   <span class="icon fa fa-angle-up"></span>
 </div>
 
+<script src="{% static "plugins/jquery.js" %}"></script>
 <script src="{% static "plugins/bootstrap.min.js" %}"></script>
 <script src="{% static "plugins/bootstrap-select.min.js" %}"></script>
 <!-- Slick Slider -->
-<script src="{% static "plugins/jquery.js" %}"></script>
-<script src="{% static "js/jquery.dataTables.min.js" %}" ></script>
-<script src="{% static "js/dataTables.bootstrap4.min.js" %}" ></script>
-<script>
-$(document).ready(function() {
-    $('#example').DataTable({
-        "language": {
-            "lengthMenu": "Afficher _MENU_ éléments par page",
-            "zeroRecords": "Nothing found - Aucunes données correspondantes ",
-            "info": "Affichage de l'élément _START_ à _END_ sur _TOTAL_ éléments",
-            "infoEmpty": " Aucuns enregistrements effectués pour l\'instant ",
-            "infoFiltered": "(filtered from _MAX_ total records)"
-        },
-		responsive: true
-    });
-} );
-</script>
 
 <script src="{% static "plugins/slick/slick.min.js" %}"></script>
 <!-- FancyBox -->
@@ -205,4 +223,3 @@ $(document).ready(function() {
 </body>
 
 </html>
-

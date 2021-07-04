@@ -1,0 +1,299 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>LightApp | Entrées</title>
+
+  
+  <!-- mobile responsive meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="{% static "plugins/slick/slick.css" %}">
+  <link rel="stylesheet" href="{% static "plugins/slick/slick-theme.css" %}">
+  <!-- FancyBox -->
+  <link rel="stylesheet" href="{% static "plugins/fancybox/jquery.fancybox.min.css" %}">
+  
+  <!-- Stylesheets -->
+  <link href="{% static "css/style.css" %}" rel="stylesheet">
+  
+  <!--Favicon-->
+  <link rel="shortcut icon" href="{% static "images/logo.jpg" %}" type="image/x-icon">
+  <link rel="icon" href="{% static "images/logo.jpg" %}" type="image/x-icon">
+
+</head>
+
+
+<body>
+  <div class="page-wrapper">
+
+
+<!--Header Upper-->
+<section class="header-uper">
+      <div class="container clearfix">
+            <div class="logo">
+                  <figure>
+                        <a href="/index">
+                              <img src="{% static "images/logo.jpg" %}" alt="" width="230" height="75">
+                        </a>
+                  </figure>
+            </div>
+            <div class="right-side">
+                  <ul class="contact-info">
+                        <li class="item">
+                              <div class="icon-box">
+                                    <i class="fa fa-envelope-o"></i>
+                              </div>
+                              <strong>Email</strong>
+                              <br>
+                              <a href="#">
+                                    <span>infolightApp@gmail.com</span>
+                              </a>
+                        </li>
+                        <li class="item">
+                              <div class="icon-box">
+                                    <i class="fa fa-phone"></i>
+                              </div>
+                              <strong>Contactez nous </strong>
+                              <br>
+                              <span>+ (225) 07 68 64 44 65/ 07 89 87 03 54</span>
+                        </li>
+                  </ul>
+                  <div class="link-btn">
+                        <a href="#" data-toggle="modal" data-target="#logoutModal" class="btn-style-one">Deconnexion</a>
+                  </div>
+            </div>
+      </div>
+</section>
+
+<!--Deconnexion code-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">ATTENTION !!!</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Êtes vous sûre de vouloir vous deconnecté ???.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Non</button>
+          <a class="btn btn-primary" href="/deconnexion">Oui, Biensûr</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--Deconnexion code-->
+
+<!--about section-->
+	<div class="container" style="margin-top:0px;">
+        <h2><b class="text-primary"><a href="/index">LightApp</a></b> - Les entrées / patient</h2>
+            <hr style="height: 3px; color:#433; background-color:#433;">
+		        <div class="row">
+                  <div class="col-sm-4">
+                        <a href="/patient-liste-entrees">
+                              <h4>Patients</h4>
+                        </a>
+                  </div>
+                  <div class="col-sm-4">
+                        <a href="/paiement-liste-entrees">
+                              <h4>Fiches de paiement</h4>
+                        </a>
+                  </div>
+                  <div class="col-sm-4">
+                        <a href="/rdv-liste-entrees">
+                              <h4>Prise de RDV</h4>
+                        </a>
+                  </div>
+            </div>
+            <hr style="height: 3px; color:#433; background-color:#433;">
+            <div style="clear:both; height: 30px">&nbsp;</div>
+	</div>
+<!--End about section-->
+      <div class="container" style="margin-top:0px;">
+            <div class="row">
+            <div class="text-white bg-info border border-dark" style="padding:10px; margin:0;font-size:20px;">&nbsp; Enregistrement des patients<a class="btn btn-danger" style="float:right;" href="/patient-liste-entrees">Annuler</a></div>
+                <div style="clear:both; height: 30px">&nbsp;</div>
+                <div class="row">
+                 <form class="default-form contact-form" action="." method="post">
+                    {% csrf_token %}
+                    {% if error %}
+                        <div class="alert alert-danger form3-row fadeSuperInUp3">
+                            <center class="">
+                                <strong>Erreur !!! Certaines informations n'ont pas été envoyé .... Réessayer encore et valider</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </center>
+                        </div>
+                    {% endif %}
+                    <div class="row">
+
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <input type="text" name="nompatient" placeholder="Nom patient" required="">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="datenaissancepatient" placeholder="Date de naissance patient" required="" id="datepicker">
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="emailpatient" placeholder="Email patient" required="">
+                                </div>
+                                <div class="form-group">
+                                    <select name="sexepatient">
+                                        <option selected >Selection Sexe patient</option>
+                                        <option value="Masculin">Masculin</option>
+                                        <option value="Feminin">Feminin</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-8 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <input type="text" name="prenompatient" placeholder="Prenom patient" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <input type="text" name="telephonepatient" placeholder="Telephone patient" required="">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="domicileepatient" placeholder="Domicile patient" required="">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="professionpatient" placeholder="Profession patient" required="">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <input type="text" name="cnipatient" placeholder="Numero Cni patient" required="">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="attestationepatient" placeholder="Attestation patient" required="">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="telephoneurgencepatient" placeholder="Numero urgence patient" required="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                    
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <select name="situationmatrimonialepatient">
+                                        <option selected >Situation Matrimoniale patient</option>
+                                        <option value="Marié(e)">Marié(e)</option>
+                                        <option value="Celibataire">Celibataire</option>
+                                        <option value="Divorcé(e)">Divorcé(e)</option>
+                                        <option value="Veuf(ve)">Veuf(ve)</option>
+                                        <option value="Autre">Autre</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <input type="text" name="npperepatient" placeholder="Nom-prenoms père patient" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <input type="text" name="npmerepatient" placeholder="Nom-prenoms mère patient" required="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="contact-area">
+                                <div class="form-group">
+                                    <select name="payspatient">
+                                        <option selected >Selection Pays patient</option>
+                                        <option value="Afrique du sud">Afrique du sud</option>
+                                        <option value="Bénin">Bénin</option>
+                                        <option value="Côte d'Ivoire">Côte d'ivoire</option>
+                                        <option value="Burkina Faso">Burkina Faso</option>
+                                        <option value="France">France</option>
+                                        <option value="Mali">Mali</option>
+                                        <option value="Ghana">Ghana</option>
+                                        <option value="Guinée">Guinée</option>
+                                        <option value="Nigeria">Nigeria</option>
+                                        <option value="Niger">Niger</option>
+                                        <option value="Togo">Togo</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <div class="contact-area">
+                                   
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <div class="contact-area">
+                                    <div class="form-group text-center">
+                                        <button type="submit" name="valider" value="valider" class="btn-style-one">Enregistrer</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <div class="contact-area">
+                                    <div class="form-group text-center">
+                                        <button type="reset"  name="annuler" class="btn btn-danger">Réinitialiser</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </form>
+                <div style="clear:both; height: 60px">&nbsp;</div>
+            </div>    
+        </div>
+	</div>
+
+</div>
+<!--End pagewrapper-->
+<!--Scroll to top-->
+<div class="scroll-to-top scroll-to-target" data-target=".header-top">
+  <span class="icon fa fa-angle-up"></span>
+</div>
+
+<script src="{% static "plugins/jquery.js" %}"></script>
+<script src="{% static "plugins/bootstrap.min.js" %}"></script>
+<script src="{% static "plugins/bootstrap-select.min.js" %}"></script>
+<!-- Slick Slider -->
+
+<script src="{% static "plugins/slick/slick.min.js" %}"></script>
+<!-- FancyBox -->
+<script src="{% static "plugins/fancybox/jquery.fancybox.min.js" %}"></script>
+
+<script src="{% static "plugins/validate.js" %}"></script>
+<script src="{% static "plugins/wow.js" %}"></script>
+<script src="{% static "plugins/jquery-ui.js" %}"></script>
+<script src="{% static "plugins/timePicker.js" %}"></script>
+<script src="{% static "js/script.js" %}"></script>
+</body>
+
+</html>
